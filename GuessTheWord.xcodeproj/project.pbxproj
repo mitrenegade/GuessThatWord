@@ -15,6 +15,9 @@
 		9E8798821AB49F87008658AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E8798811AB49F87008658AB /* Images.xcassets */; };
 		9E8798851AB49F87008658AB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E8798831AB49F87008658AB /* LaunchScreen.xib */; };
 		9E8798911AB49F87008658AB /* GuessTheWordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798901AB49F87008658AB /* GuessTheWordTests.m */; };
+		9E87989F1AB4A4F0008658AB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E87989E1AB4A4F0008658AB /* MenuViewController.m */; };
+		9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798A11AB4A548008658AB /* Model.xcdatamodeld */; };
+		9E8798A91AB4A5E5008658AB /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798A81AB4A5E5008658AB /* Deck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,11 @@
 		9E87988A1AB49F87008658AB /* GuessTheWordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuessTheWordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E87988F1AB49F87008658AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E8798901AB49F87008658AB /* GuessTheWordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessTheWordTests.m; sourceTree = "<group>"; };
+		9E87989D1AB4A4F0008658AB /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		9E87989E1AB4A4F0008658AB /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		9E8798A21AB4A548008658AB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9E8798A71AB4A5E5008658AB /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		9E8798A81AB4A5E5008658AB /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +91,14 @@
 		9E8798701AB49F87008658AB /* GuessTheWord */ = {
 			isa = PBXGroup;
 			children = (
+				9E8798A01AB4A538008658AB /* Core Data */,
 				9E8798751AB49F87008658AB /* AppDelegate.h */,
 				9E8798761AB49F87008658AB /* AppDelegate.m */,
 				9E87987B1AB49F87008658AB /* ViewController.h */,
 				9E87987C1AB49F87008658AB /* ViewController.m */,
 				9E87987E1AB49F87008658AB /* Main.storyboard */,
+				9E87989D1AB4A4F0008658AB /* MenuViewController.h */,
+				9E87989E1AB4A4F0008658AB /* MenuViewController.m */,
 				9E8798811AB49F87008658AB /* Images.xcassets */,
 				9E8798831AB49F87008658AB /* LaunchScreen.xib */,
 				9E8798781AB49F87008658AB /* GuessTheWord.xcdatamodeld */,
@@ -120,6 +131,16 @@
 				9E87988F1AB49F87008658AB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9E8798A01AB4A538008658AB /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9E8798A11AB4A548008658AB /* Model.xcdatamodeld */,
+				9E8798A71AB4A5E5008658AB /* Deck.h */,
+				9E8798A81AB4A5E5008658AB /* Deck.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +244,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E87987A1AB49F87008658AB /* GuessTheWord.xcdatamodeld in Sources */,
+				9E8798A91AB4A5E5008658AB /* Deck.m in Sources */,
 				9E8798771AB49F87008658AB /* AppDelegate.m in Sources */,
 				9E87987D1AB49F87008658AB /* ViewController.m in Sources */,
 				9E8798741AB49F87008658AB /* main.m in Sources */,
+				9E87989F1AB4A4F0008658AB /* MenuViewController.m in Sources */,
+				9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuessTheWord/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -360,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuessTheWord/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -437,6 +463,16 @@
 			);
 			currentVersion = 9E8798791AB49F87008658AB /* GuessTheWord.xcdatamodel */;
 			path = GuessTheWord.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		9E8798A11AB4A548008658AB /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9E8798A21AB4A548008658AB /* Model.xcdatamodel */,
+			);
+			currentVersion = 9E8798A21AB4A548008658AB /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
