@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Deck+Info.h
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/14/15.
 //  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Deck.h"
 
-@interface ViewController : UIViewController
-
+@interface Deck (Info)
 
 @end
-

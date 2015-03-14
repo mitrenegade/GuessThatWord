@@ -12,7 +12,15 @@
 
 @interface Deck : NSManagedObject
 
-@property (nonatomic, retain) id words;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSSet *cards;
+@end
+
+@interface Deck (CoreDataGeneratedAccessors)
+
+- (void)addCardsObject:(NSManagedObject *)value;
+- (void)removeCardsObject:(NSManagedObject *)value;
+- (void)addCards:(NSSet *)values;
+- (void)removeCards:(NSSet *)values;
 
 @end

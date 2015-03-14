@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  GuessTheWord
+//
+//  Created by Bobby Ren on 3/14/15.
+//  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
+//
+
+#ifndef GuessTheWord_PrefixHeader_pch
+#define GuessTheWord_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "AppDelegate.h"
+#import "UIAlertView+MKBlockAdditions.h"
+//#import <Parse/Parse.h>
+#import "NSManagedObject+Entity.h"
+#import "NSManagedObject+Query.h"
+#import "NSObject+Notify.h"
+//#import "Constants.h"
+
+#define _appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define _storyboard(name) ([UIStoryboard storyboardWithName:name bundle:nil])
+
+#define IS_ABOVE_IOS6 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IS_ABOVE_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+#define VERSION [NSString stringWithFormat: @"%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]
+
+
+// global constants
+#define TESTING 1
+
+#endif

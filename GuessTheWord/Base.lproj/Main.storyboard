@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Deck View Controller-->
         <scene sceneID="CUA-MN-B8C">
             <objects>
-                <viewController id="n2B-I9-kkM" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="n2B-I9-kkM" customClass="EditDeckViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S1i-6c-2k0"/>
                         <viewControllerLayoutGuide type="bottom" id="zYK-v2-GBV"/>
@@ -15,12 +15,73 @@
                     <view key="view" contentMode="scaleToFill" id="zdl-Qr-N1f">
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deck Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-p7-vUX">
+                                <rect key="frame" x="173" y="75" width="357" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="357" id="d1p-zM-mri"/>
+                                    <constraint firstAttribute="height" constant="68" id="j26-Ad-f66"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards in deck:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abS-MN-bfK">
+                                <rect key="frame" x="206" y="151" width="291" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="CMk-LE-Cwn"/>
+                                    <constraint firstAttribute="width" constant="291" id="Kyh-zv-Xpp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="31P-zK-hfy">
+                                <rect key="frame" x="173" y="75" width="357" height="68"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="n2B-I9-kkM" id="en8-mt-cf8"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a new word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1f-l9-fSg">
+                                <rect key="frame" x="93" y="240" width="516" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3vv-jS-q9i"/>
+                                    <constraint firstAttribute="width" constant="516" id="Xam-aM-DfX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="n2B-I9-kkM" id="DzW-uH-xtz"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="abS-MN-bfK" firstAttribute="top" secondItem="31P-zK-hfy" secondAttribute="bottom" constant="8" id="34b-WP-z0R"/>
+                            <constraint firstItem="uOB-p7-vUX" firstAttribute="top" secondItem="31P-zK-hfy" secondAttribute="top" id="HDv-nN-c2a"/>
+                            <constraint firstItem="uOB-p7-vUX" firstAttribute="top" secondItem="S1i-6c-2k0" secondAttribute="bottom" constant="55" id="Y48-OA-BZy"/>
+                            <constraint firstItem="uOB-p7-vUX" firstAttribute="bottom" secondItem="31P-zK-hfy" secondAttribute="bottom" id="Yhn-Hl-uvP"/>
+                            <constraint firstAttribute="centerX" secondItem="abS-MN-bfK" secondAttribute="centerX" id="crb-ba-6Lw"/>
+                            <constraint firstAttribute="centerX" secondItem="d1f-l9-fSg" secondAttribute="centerX" id="dYc-qg-pzz"/>
+                            <constraint firstAttribute="centerX" secondItem="uOB-p7-vUX" secondAttribute="centerX" id="ig6-sm-fDQ"/>
+                            <constraint firstItem="uOB-p7-vUX" firstAttribute="leading" secondItem="31P-zK-hfy" secondAttribute="leading" id="izV-Qn-ErU"/>
+                            <constraint firstItem="uOB-p7-vUX" firstAttribute="trailing" secondItem="31P-zK-hfy" secondAttribute="trailing" id="nlv-UV-3tu"/>
+                            <constraint firstItem="d1f-l9-fSg" firstAttribute="top" secondItem="abS-MN-bfK" secondAttribute="bottom" constant="26" id="uS7-hB-4Qn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="constraintHeightInputWord" destination="3vv-jS-q9i" id="5Kj-m0-XrI"/>
+                        <outlet property="inputTitle" destination="31P-zK-hfy" id="wVH-WT-KXY"/>
+                        <outlet property="inputWord" destination="d1f-l9-fSg" id="N71-QZ-m9D"/>
+                        <outlet property="labelCount" destination="abS-MN-bfK" id="rcB-bU-VlY"/>
+                        <outlet property="labelTitle" destination="uOB-p7-vUX" id="axY-cP-rl7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmt-qb-zyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.5" y="823"/>
+            <point key="canvasLocation" x="1052.5" y="813"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="0f6-jN-1sE">
@@ -66,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="852" y="-58"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Root Split View Controller-->
         <scene sceneID="Di2-1B-UhF">
             <objects>
-                <splitViewController id="25O-WG-rPH" sceneMemberID="viewController">
+                <splitViewController id="25O-WG-rPH" customClass="RootSplitViewController" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
