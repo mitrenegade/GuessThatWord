@@ -51,7 +51,7 @@
 
     PlayViewController *controller = [_storyboard(@"Main") instantiateViewControllerWithIdentifier:@"PlayViewController"];
     controller.delegate = self;
-    controller.deck = deck;
+    [controller setupWithDeck:deck];
 
     [self presentViewController:controller animated:YES completion:nil];
 }

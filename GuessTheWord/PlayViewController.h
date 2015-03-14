@@ -14,15 +14,37 @@
 
 @end
 
+typedef enum GameStateEnum {
+    NoRound,
+    GameStarting,
+    RoundActive,
+    RoundRest,
+    GameStateMax
+} GameState;
+
 @interface PlayViewController : UIViewController
+{
+    NSTimer *timer;
+    float timeLeft;
+    GameState state;
+
+    NSMutableArray *allCards;
+    Card *currentCard;
+}
+@property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
 @property (weak, nonatomic) IBOutlet UILabel *labelWord;
 @property (weak, nonatomic) IBOutlet UILabel *labelMessage;
 @property (weak, nonatomic) IBOutlet UIButton *buttonQuit;
 
+// debug only
+@property (weak, nonatomic) IBOutlet UIButton *buttonCorrect;
+@property (weak, nonatomic) IBOutlet UIButton *buttonSkip;
+
 @property (nonatomic) Deck *deck;
 @property (weak, nonatomic) id delegate;
 
+-(void)setupWithDeck:(Deck *)newDeck;
 - (IBAction)didClickButton:(id)sender;
 
 @end
