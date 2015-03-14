@@ -18,6 +18,8 @@
 #import "NSManagedObject+Query.h"
 #import "NSObject+Notify.h"
 //#import "Constants.h"
+#import "Deck.h"
+#import "Card.h"
 
 #define _appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #define _storyboard(name) ([UIStoryboard storyboardWithName:name bundle:nil])

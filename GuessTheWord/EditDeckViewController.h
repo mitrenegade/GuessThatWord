@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
 //
 
-@class Deck;
 #import <UIKit/UIKit.h>
 
 @interface EditDeckViewController : UIViewController <UITextFieldDelegate>

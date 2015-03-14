@@ -118,6 +118,89 @@
             </objects>
             <point key="canvasLocation" x="931.5" y="813"/>
         </scene>
+        <!--Play View Controller-->
+        <scene sceneID="4sA-LM-A0G">
+            <objects>
+                <viewController storyboardIdentifier="PlayViewController" id="yas-7V-nMb" customClass="PlayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r7W-tT-6zD"/>
+                        <viewControllerLayoutGuide type="bottom" id="pOG-YI-1rK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r7E-iN-z4s">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JvR-rV-jAG">
+                                <rect key="frame" x="189" y="308" width="646" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="152" id="7Lm-Qd-onD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="80"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-32-2Qo">
+                                <rect key="frame" x="346" y="88" width="332" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="N5C-5y-C6v"/>
+                                    <constraint firstAttribute="width" constant="332" id="WZn-ct-xhq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raK-AI-aYI">
+                                <rect key="frame" x="16" y="20" width="213" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="213" id="gwn-cS-CiC"/>
+                                    <constraint firstAttribute="height" constant="84" id="uOw-jk-qW4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                <state key="normal" title="Quit Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickButton:" destination="yas-7V-nMb" eventType="touchUpInside" id="vAU-0M-gNg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gK-kK-HA2">
+                                <rect key="frame" x="346" y="559" width="332" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="MUV-3p-DZl"/>
+                                    <constraint firstAttribute="width" constant="332" id="zli-N5-E8G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="raK-AI-aYI" firstAttribute="leading" secondItem="r7E-iN-z4s" secondAttribute="leadingMargin" id="0WS-AK-Okd"/>
+                            <constraint firstItem="raK-AI-aYI" firstAttribute="top" secondItem="r7W-tT-6zD" secondAttribute="bottom" id="Eea-ON-IBm"/>
+                            <constraint firstItem="h4u-32-2Qo" firstAttribute="top" secondItem="r7W-tT-6zD" secondAttribute="bottom" constant="68" id="JGf-pu-S9D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JvR-rV-jAG" secondAttribute="trailing" constant="173" id="JKf-Wl-Xc6"/>
+                            <constraint firstItem="JvR-rV-jAG" firstAttribute="leading" secondItem="r7E-iN-z4s" secondAttribute="leadingMargin" constant="173" id="XYM-j4-ncr"/>
+                            <constraint firstAttribute="centerX" secondItem="h4u-32-2Qo" secondAttribute="centerX" id="beG-Mz-3Oh"/>
+                            <constraint firstAttribute="centerY" secondItem="JvR-rV-jAG" secondAttribute="centerY" id="f3f-NP-E6z"/>
+                            <constraint firstAttribute="centerX" secondItem="2gK-kK-HA2" secondAttribute="centerX" id="ffO-NR-9nS"/>
+                            <constraint firstItem="pOG-YI-1rK" firstAttribute="top" secondItem="2gK-kK-HA2" secondAttribute="bottom" constant="119" id="kfc-dC-Pny"/>
+                            <constraint firstAttribute="centerX" secondItem="JvR-rV-jAG" secondAttribute="centerX" id="vaj-au-8ei"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="buttonQuit" destination="raK-AI-aYI" id="7i0-7Q-Vuv"/>
+                        <outlet property="labelMessage" destination="2gK-kK-HA2" id="vjF-pb-qAc"/>
+                        <outlet property="labelTime" destination="h4u-32-2Qo" id="5Jq-g6-Gze"/>
+                        <outlet property="labelWord" destination="JvR-rV-jAG" id="h0V-Pp-8gP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QdW-SE-14p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-528" y="1527"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="0f6-jN-1sE">
             <objects>

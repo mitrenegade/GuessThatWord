@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayViewController.h"
 
 @class MenuViewController;
 @class EditDeckViewController;
-@interface RootSplitViewController : UISplitViewController
+@interface RootSplitViewController : UISplitViewController <PlayViewDelegate>
 
 @property (weak, nonatomic) MenuViewController *menuController;
 @property (weak, nonatomic) EditDeckViewController *editDeckController;

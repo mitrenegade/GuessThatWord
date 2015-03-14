@@ -7,8 +7,6 @@
 //
 
 #import "EditDeckViewController.h"
-#import "Deck.h"
-#import "Card.h"
 
 #define PLACEHOLDER_TITLE @"Enter a name for this deck"
 #define FORMAT_CARD_COUNT @"Cards in deck: %lu"
@@ -155,7 +153,21 @@
     }
     else if (sender == self.buttonPlay) {
         NSLog(@"Play");
+        if (!deck) {
+            [UIAlertView alertViewWithTitle:@"No deck" message:@"Please create a deck first!"];
+            return;
+        }
+        else if (!deck.cards.count) {
+            [UIAlertView alertViewWithTitle:@"No cards" message:@"There are no words in this deck!"];
+            return;
+        }
+
+        [self playDeck];
     }
+}
+
+-(void)playDeck {
+    [self notify:@"deck:play" object:nil userInfo:@{@"deck":deck}];
 }
 
 @end
