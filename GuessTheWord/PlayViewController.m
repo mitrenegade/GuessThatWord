@@ -105,6 +105,8 @@
     if (currentCard) {
         [self changeStateTo:RoundActive];
         score = 0;
+
+        [self enableCardNavigation:YES];
     }
     else {
         [self changeStateTo:NoRound];
@@ -120,6 +122,8 @@
     else {
         [self changeStateTo:NoRound];
     }
+
+    [self enableCardNavigation:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -151,7 +155,11 @@
     }
 }
 
+#pragma mark Card control
 -(void)advance:(BOOL)correct {
+    if (state != RoundActive)
+        return;
+
     // advances the card, and updates score
     if (!currentCard)
         return;
@@ -177,5 +185,11 @@
 
     self.labelWord.text = currentCard.text;
     return YES;
+}
+
+-(void)enableCardNavigation:(BOOL)enabled {
+    // todo: when using ipad motion, set some variable
+    [self.buttonCorrect setEnabled:enabled];
+    [self.buttonSkip setEnabled:enabled];
 }
 @end
