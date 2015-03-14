@@ -199,7 +199,7 @@
                                     <action selector="didClickButton:" destination="yas-7V-nMb" eventType="touchUpInside" id="o11-pi-0Um"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu0-Ok-dD3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cu0-Ok-dD3">
                                 <rect key="frame" x="346" y="56" width="332" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="dFH-3d-A6k"/>

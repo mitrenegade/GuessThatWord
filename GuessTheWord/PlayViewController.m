@@ -104,6 +104,7 @@
     // if a card is selected, then continue the timer; otherwise, game is over
     if (currentCard) {
         [self changeStateTo:RoundActive];
+        score = 0;
     }
     else {
         [self changeStateTo:NoRound];
@@ -113,6 +114,8 @@
 -(void)roundDone {
     if (currentCard) {
         [self changeStateTo:RoundRest];
+        currentCard = nil;
+        self.labelWord.text = currentCard.text;
     }
     else {
         [self changeStateTo:NoRound];
@@ -150,11 +153,22 @@
 
 -(void)advance:(BOOL)correct {
     // advances the card, and updates score
-    [self nextCard];
+    if (!currentCard)
+        return;
+
+    if (correct) {
+        score++;
+    }
+
+    if (![self nextCard]) {
+        [self roundDone];
+    }
+    NSLog(@"Card advanced. Score: %d", score);
 }
 
 -(BOOL)nextCard {
     // picks the next card from the deck and displays it
+    currentCard = nil;
     if ([allCards count] == 0)
         return NO;
 

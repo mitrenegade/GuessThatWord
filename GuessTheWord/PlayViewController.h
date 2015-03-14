@@ -30,6 +30,8 @@ typedef enum GameStateEnum {
 
     NSMutableArray *allCards;
     Card *currentCard;
+
+    int score;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
