@@ -1,5 +1,5 @@
 //
-//  Deck.m
+//  Deck+Info.h
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/14/15.
@@ -8,10 +8,6 @@
 
 #import "Deck.h"
 
-
-@implementation Deck
-
-@dynamic title;
-@dynamic cards;
+@interface Deck (Info)
 
 @end

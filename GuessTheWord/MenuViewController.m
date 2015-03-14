@@ -23,11 +23,23 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    [self reloadData];
+    [self listenFor:@"decks:updated" action:@selector(updateDecks:)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)updateDecks:(NSNotification *)n {
+    [self reloadData];
+}
+
+-(void)reloadData {
+    decks = [[Deck where:@{}] all];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

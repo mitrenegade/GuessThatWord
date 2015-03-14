@@ -1,17 +1,18 @@
 //
-//  Deck.m
+//  Card.m
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/14/15.
 //  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
 //
 
+#import "Card.h"
 #import "Deck.h"
 
 
-@implementation Deck
+@implementation Card
 
-@dynamic title;
-@dynamic cards;
+@dynamic text;
+@dynamic deck;
 
 @end
