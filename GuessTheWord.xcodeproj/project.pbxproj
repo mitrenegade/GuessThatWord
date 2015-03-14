@@ -32,6 +32,7 @@
 		9E8798DC1AB4B19D008658AB /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798CF1AB4B19D008658AB /* UIImage+RoundedCorner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E8798DD1AB4B19D008658AB /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798D11AB4B19D008658AB /* Util.m */; };
 		9E8798E41AB4BA60008658AB /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798E31AB4BA60008658AB /* RootSplitViewController.m */; };
+		9E890D691AB4C5A4002F3AD5 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		9E8798DE1AB4B1FC008658AB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		9E8798E21AB4BA60008658AB /* RootSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSplitViewController.h; sourceTree = "<group>"; };
 		9E8798E31AB4BA60008658AB /* RootSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSplitViewController.m; sourceTree = "<group>"; };
+		9E890D671AB4C5A4002F3AD5 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				9E87989E1AB4A4F0008658AB /* MenuViewController.m */,
 				9E8798AA1AB4A95F008658AB /* EditDeckViewController.h */,
 				9E8798AB1AB4A95F008658AB /* EditDeckViewController.m */,
+				9E890D671AB4C5A4002F3AD5 /* PlayViewController.h */,
+				9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */,
 				9E8798811AB49F87008658AB /* Images.xcassets */,
 				9E8798831AB49F87008658AB /* LaunchScreen.xib */,
 				9E8798711AB49F87008658AB /* Supporting Files */,
@@ -351,6 +356,7 @@
 				9E8798D31AB4B19D008658AB /* NSObject+MKBlockAdditions.m in Sources */,
 				9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */,
 				9E8798DC1AB4B19D008658AB /* UIImage+RoundedCorner.m in Sources */,
+				9E890D691AB4C5A4002F3AD5 /* PlayViewController.m in Sources */,
 				9E8798AF1AB4ACD5008658AB /* Deck+Info.m in Sources */,
 				9E8798B21AB4AE4B008658AB /* Deck.m in Sources */,
 				9E8798DD1AB4B19D008658AB /* Util.m in Sources */,

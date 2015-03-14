@@ -7,10 +7,8 @@
 //
 
 #import "EditDeckViewController.h"
-#import "Deck.h"
-#import "Card.h"
 
-#define PLACEHOLDER_TITLE @"Name for this deck"
+#define PLACEHOLDER_TITLE @"Enter a name for this deck"
 #define FORMAT_CARD_COUNT @"Cards in deck: %lu"
 @interface EditDeckViewController ()
 
@@ -24,29 +22,37 @@
 
     self.constraintHeightInputWord.constant = 40;
 
-#if TESTING
-    NSArray *decks = [[Deck where:@{}] allObjectsInMOC:_appDelegate.managedObjectContext];
-    if ([decks count]) {
-        self.deck = [decks firstObject];
-    }
-#endif
-    
-    if (!self.deck) {
-        self.deck = (Deck *)[Deck createEntityInContext:_appDelegate.managedObjectContext];
-    }
-
     [self updateTitle];
     [self updateCardCount];
 }
 
+-(Deck *)deck {
+//#if TESTING
+    if (deck)
+        return deck;
+
+    NSArray *decks = [[Deck where:@{}] allObjectsInMOC:_appDelegate.managedObjectContext];
+    if ([decks count]) {
+        deck = [decks firstObject];
+    }
+//#endif
+
+    if (!deck) {
+        deck = (Deck *)[Deck createEntityInContext:_appDelegate.managedObjectContext];
+        [self saveDeck];
+    }
+
+    return deck;
+}
+
 -(void)createNewDeck {
     Deck *newDeck = (Deck *)[Deck createEntityInContext:_appDelegate.managedObjectContext];
-    newDeck.title = @"New deck";
+    newDeck.title = nil;
     [self editDeck:newDeck];
 }
 
--(void)editDeck:(Deck *)deck {
-    self.deck = deck;
+-(void)editDeck:(Deck *)_deck {
+    deck = _deck;
     [self updateTitle];
     [self updateCardCount];
     [self saveDeck];
@@ -67,6 +73,21 @@
 -(void)saveDeck {
     [_appDelegate.managedObjectContext save:nil];
     [self notify:@"decks:updated"];
+}
+
+-(void)deleteDeck {
+    if (!deck) {
+        return;
+    }
+    [_appDelegate.managedObjectContext deleteObject:deck];
+
+    deck = nil;
+
+    // reload and refresh. will load next existing deck or create a new deck
+    [self updateTitle];
+    [self updateCardCount];
+
+    [self saveDeck];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,6 +131,9 @@
             Card *card = (Card *)[Card createEntityInContext:_appDelegate.managedObjectContext];
             card.text = self.inputWord.text;
             card.deck = self.deck;
+
+            self.inputWord.text = nil;
+            
             [self updateCardCount];
             [self saveDeck];
         }
@@ -119,6 +143,31 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark Buttons
+-(IBAction)didClickButton:(id)sender {
+    if (sender == self.buttonDelete) {
+        NSLog(@"Delete");
+        [self deleteDeck];
+    }
+    else if (sender == self.buttonPlay) {
+        NSLog(@"Play");
+        if (!deck) {
+            [UIAlertView alertViewWithTitle:@"No deck" message:@"Please create a deck first!"];
+            return;
+        }
+        else if (!deck.cards.count) {
+            [UIAlertView alertViewWithTitle:@"No cards" message:@"There are no words in this deck!"];
+            return;
+        }
+
+        [self playDeck];
+    }
+}
+
+-(void)playDeck {
+    [self notify:@"deck:play" object:nil userInfo:@{@"deck":deck}];
 }
 
 @end

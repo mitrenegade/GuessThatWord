@@ -7,7 +7,6 @@
 //
 
 #import "MenuViewController.h"
-#import "Deck.h"
 
 @interface MenuViewController ()
 
@@ -39,6 +38,7 @@
 
 -(void)reloadData {
     decks = [[Deck where:@{}] all];
+    NSLog(@"Reloading decks: %lu decks", [decks count]);
     [self.tableView reloadData];
 }
 
@@ -65,6 +65,9 @@
         if (row - 1 <= decks.count) {
             Deck *deck = decks[row-1];
             cell.textLabel.text = deck.title;
+            if (!deck.title) {
+                cell.textLabel.text = @"Untitled deck";
+            }
         }
     }
     // Configure the cell...

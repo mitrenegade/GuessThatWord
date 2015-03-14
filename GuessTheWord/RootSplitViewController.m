@@ -25,6 +25,8 @@
     self.editDeckController = self.viewControllers[1];
 
     self.menuController.editDeckController = self.editDeckController;
+
+    [self listenFor:@"deck:play" action:@selector(playDeck:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,4 +42,22 @@
     // Pass the selected object to the new view controller.
 }
 
+-(void)playDeck:(NSNotification *)n {
+    NSDictionary *userInfo = n.userInfo;
+    Deck *deck = userInfo[@"deck"];
+    if (!deck) {
+        return;
+    }
+
+    PlayViewController *controller = [_storyboard(@"Main") instantiateViewControllerWithIdentifier:@"PlayViewController"];
+    controller.delegate = self;
+    [controller setupWithDeck:deck];
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+#pragma mark PlayViewDelegate
+-(void)stopPlaying {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
