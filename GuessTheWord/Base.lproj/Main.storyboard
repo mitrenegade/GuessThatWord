@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="25O-WG-rPH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Edit Deck View Controller-->
@@ -56,22 +57,56 @@
                                     <outlet property="delegate" destination="n2B-I9-kkM" id="DzW-uH-xtz"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDU-bm-Cfj">
+                                <rect key="frame" x="459" y="671" width="228" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="5bl-Hy-kis"/>
+                                    <constraint firstAttribute="width" constant="228" id="zQp-DT-tgU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="Play this Deck">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickButton:" destination="n2B-I9-kkM" eventType="touchUpInside" id="GTF-e9-BeV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aC-fH-6ma">
+                                <rect key="frame" x="16" y="671" width="228" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="UA1-sl-nMQ"/>
+                                    <constraint firstAttribute="height" constant="77" id="obe-Uc-Kvy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <state key="normal" title="Delete Deck">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didClickButton:" destination="n2B-I9-kkM" eventType="touchUpInside" id="yZV-uG-DeX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="abS-MN-bfK" firstAttribute="top" secondItem="31P-zK-hfy" secondAttribute="bottom" constant="8" id="34b-WP-z0R"/>
                             <constraint firstItem="uOB-p7-vUX" firstAttribute="top" secondItem="31P-zK-hfy" secondAttribute="top" id="HDv-nN-c2a"/>
+                            <constraint firstItem="zYK-v2-GBV" firstAttribute="top" secondItem="6aC-fH-6ma" secondAttribute="bottom" constant="20" id="RPx-ph-OcS"/>
                             <constraint firstItem="uOB-p7-vUX" firstAttribute="top" secondItem="S1i-6c-2k0" secondAttribute="bottom" constant="55" id="Y48-OA-BZy"/>
                             <constraint firstItem="uOB-p7-vUX" firstAttribute="bottom" secondItem="31P-zK-hfy" secondAttribute="bottom" id="Yhn-Hl-uvP"/>
                             <constraint firstAttribute="centerX" secondItem="abS-MN-bfK" secondAttribute="centerX" id="crb-ba-6Lw"/>
                             <constraint firstAttribute="centerX" secondItem="d1f-l9-fSg" secondAttribute="centerX" id="dYc-qg-pzz"/>
+                            <constraint firstItem="zYK-v2-GBV" firstAttribute="top" secondItem="hDU-bm-Cfj" secondAttribute="bottom" constant="20" id="fbq-Km-RrH"/>
                             <constraint firstAttribute="centerX" secondItem="uOB-p7-vUX" secondAttribute="centerX" id="ig6-sm-fDQ"/>
                             <constraint firstItem="uOB-p7-vUX" firstAttribute="leading" secondItem="31P-zK-hfy" secondAttribute="leading" id="izV-Qn-ErU"/>
                             <constraint firstItem="uOB-p7-vUX" firstAttribute="trailing" secondItem="31P-zK-hfy" secondAttribute="trailing" id="nlv-UV-3tu"/>
+                            <constraint firstItem="6aC-fH-6ma" firstAttribute="leading" secondItem="zdl-Qr-N1f" secondAttribute="leadingMargin" id="okz-GW-c44"/>
+                            <constraint firstItem="hDU-bm-Cfj" firstAttribute="trailing" secondItem="zdl-Qr-N1f" secondAttribute="trailingMargin" id="sgl-iN-sLX"/>
                             <constraint firstItem="d1f-l9-fSg" firstAttribute="top" secondItem="abS-MN-bfK" secondAttribute="bottom" constant="26" id="uS7-hB-4Qn"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonDelete" destination="6aC-fH-6ma" id="Xdl-kd-gZo"/>
+                        <outlet property="buttonPlay" destination="hDU-bm-Cfj" id="XDz-Yk-B24"/>
                         <outlet property="constraintHeightInputWord" destination="3vv-jS-q9i" id="5Kj-m0-XrI"/>
                         <outlet property="inputTitle" destination="31P-zK-hfy" id="wVH-WT-KXY"/>
                         <outlet property="inputWord" destination="d1f-l9-fSg" id="N71-QZ-m9D"/>
@@ -81,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmt-qb-zyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052.5" y="813"/>
+            <point key="canvasLocation" x="931.5" y="813"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="0f6-jN-1sE">
