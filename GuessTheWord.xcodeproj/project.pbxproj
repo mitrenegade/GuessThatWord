@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9E8798741AB49F87008658AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798731AB49F87008658AB /* main.m */; };
 		9E8798771AB49F87008658AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798761AB49F87008658AB /* AppDelegate.m */; };
-		9E87987D1AB49F87008658AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E87987C1AB49F87008658AB /* ViewController.m */; };
 		9E8798801AB49F87008658AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E87987E1AB49F87008658AB /* Main.storyboard */; };
 		9E8798821AB49F87008658AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E8798811AB49F87008658AB /* Images.xcassets */; };
 		9E8798851AB49F87008658AB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E8798831AB49F87008658AB /* LaunchScreen.xib */; };
@@ -32,6 +31,7 @@
 		9E8798DB1AB4B19D008658AB /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798CD1AB4B19D008658AB /* UIImage+Resize.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E8798DC1AB4B19D008658AB /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798CF1AB4B19D008658AB /* UIImage+RoundedCorner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E8798DD1AB4B19D008658AB /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798D11AB4B19D008658AB /* Util.m */; };
+		9E8798E41AB4BA60008658AB /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798E31AB4BA60008658AB /* RootSplitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,6 @@
 		9E8798731AB49F87008658AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E8798751AB49F87008658AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E8798761AB49F87008658AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9E87987B1AB49F87008658AB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9E87987C1AB49F87008658AB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9E87987F1AB49F87008658AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E8798811AB49F87008658AB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9E8798841AB49F87008658AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -95,6 +93,8 @@
 		9E8798D01AB4B19D008658AB /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		9E8798D11AB4B19D008658AB /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		9E8798DE1AB4B1FC008658AB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9E8798E21AB4BA60008658AB /* RootSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSplitViewController.h; sourceTree = "<group>"; };
+		9E8798E31AB4BA60008658AB /* RootSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSplitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,13 +140,13 @@
 				9E8798A01AB4A538008658AB /* Core Data */,
 				9E8798751AB49F87008658AB /* AppDelegate.h */,
 				9E8798761AB49F87008658AB /* AppDelegate.m */,
-				9E87987B1AB49F87008658AB /* ViewController.h */,
-				9E87987C1AB49F87008658AB /* ViewController.m */,
 				9E87987E1AB49F87008658AB /* Main.storyboard */,
-				9E8798AA1AB4A95F008658AB /* EditDeckViewController.h */,
-				9E8798AB1AB4A95F008658AB /* EditDeckViewController.m */,
+				9E8798E21AB4BA60008658AB /* RootSplitViewController.h */,
+				9E8798E31AB4BA60008658AB /* RootSplitViewController.m */,
 				9E87989D1AB4A4F0008658AB /* MenuViewController.h */,
 				9E87989E1AB4A4F0008658AB /* MenuViewController.m */,
+				9E8798AA1AB4A95F008658AB /* EditDeckViewController.h */,
+				9E8798AB1AB4A95F008658AB /* EditDeckViewController.m */,
 				9E8798811AB49F87008658AB /* Images.xcassets */,
 				9E8798831AB49F87008658AB /* LaunchScreen.xib */,
 				9E8798711AB49F87008658AB /* Supporting Files */,
@@ -340,12 +340,12 @@
 				9E8798D41AB4B19D008658AB /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				9E8798771AB49F87008658AB /* AppDelegate.m in Sources */,
 				9E8798D21AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
-				9E87987D1AB49F87008658AB /* ViewController.m in Sources */,
 				9E8798D81AB4B19D008658AB /* NSObject+Notify.m in Sources */,
 				9E8798D61AB4B19D008658AB /* NSManagedObject+Entity.m in Sources */,
 				9E8798DB1AB4B19D008658AB /* UIImage+Resize.m in Sources */,
 				9E8798741AB49F87008658AB /* main.m in Sources */,
 				9E8798D71AB4B19D008658AB /* NSManagedObject+Query.m in Sources */,
+				9E8798E41AB4BA60008658AB /* RootSplitViewController.m in Sources */,
 				9E87989F1AB4A4F0008658AB /* MenuViewController.m in Sources */,
 				9E8798B51AB4AE4C008658AB /* Card.m in Sources */,
 				9E8798D31AB4B19D008658AB /* NSObject+MKBlockAdditions.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MenuViewController.h
+//  RootSplitViewController.h
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/14/15.
@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EditDeckViewController.h"
 
-@interface MenuViewController : UITableViewController
-{
-    NSMutableArray *decks;
-}
+@class MenuViewController;
+@class EditDeckViewController;
+@interface RootSplitViewController : UISplitViewController
 
+@property (weak, nonatomic) MenuViewController *menuController;
 @property (weak, nonatomic) EditDeckViewController *editDeckController;
 @end

@@ -39,6 +39,19 @@
     [self updateCardCount];
 }
 
+-(void)createNewDeck {
+    Deck *newDeck = (Deck *)[Deck createEntityInContext:_appDelegate.managedObjectContext];
+    newDeck.title = @"New deck";
+    [self editDeck:newDeck];
+}
+
+-(void)editDeck:(Deck *)deck {
+    self.deck = deck;
+    [self updateTitle];
+    [self updateCardCount];
+    [self saveDeck];
+}
+
 -(void)updateTitle {
     self.labelTitle.text = self.deck.title;
     if (!self.deck.title) {
@@ -61,15 +74,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"Segue: %@", segue.identifier);
 }
-*/
 
 #pragma mark TextFieldDelegate
 

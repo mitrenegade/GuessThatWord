@@ -17,4 +17,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightInputWord;
 
 @property (nonatomic, strong) Deck *deck;
+
+-(void)createNewDeck;
+-(void)editDeck:(Deck *)deck;
 @end

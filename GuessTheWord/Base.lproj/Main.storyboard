@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmt-qb-zyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964.5" y="805"/>
+            <point key="canvasLocation" x="1052.5" y="813"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="0f6-jN-1sE">
@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="852" y="-58"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Root Split View Controller-->
         <scene sceneID="Di2-1B-UhF">
             <objects>
-                <splitViewController id="25O-WG-rPH" sceneMemberID="viewController">
+                <splitViewController id="25O-WG-rPH" customClass="RootSplitViewController" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
