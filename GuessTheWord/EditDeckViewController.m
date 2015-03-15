@@ -71,7 +71,7 @@
 }
 
 -(void)saveDeck {
-    [_appDelegate.managedObjectContext save:nil];
+    [_appDelegate saveContext];
     [self notify:@"decks:updated"];
 }
 

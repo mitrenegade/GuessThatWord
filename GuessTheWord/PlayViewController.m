@@ -282,5 +282,7 @@ static CMMotionManager *sharedManager;
         orientationSum = 0;
         orientationState = Regular;
     }
+
+    // todo: display message before advancing; only advance when the device has been returned to the upright position
 }
 @end

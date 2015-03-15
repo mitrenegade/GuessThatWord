@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self loadDefaultDeck];
+
     return YES;
 }
 
@@ -122,6 +124,31 @@
             abort();
         }
     }
+}
+
+#pragma default deck
+-(void)loadDefaultDeck {
+    NSString *title = @"SAT Vocabulary List";
+    NSArray *decks = [[Deck where:@{@"title":title}] all];
+    if ([decks count] == 0) {
+        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"vocab" ofType:@"txt"];
+        NSString *fileString = [NSString stringWithContentsOfFile:filepath];
+        NSLog(@"path: %@ filestring: %@", filepath, fileString);
+
+        NSArray *array = [fileString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSLog(@"Array: %@", array);
+
+        Deck *deck = [Deck createEntityInContext:self.managedObjectContext];
+        deck.title = title;
+        for (NSString *word in array) {
+            Card *card = [Card createEntityInContext:self.managedObjectContext];
+            card.text = word;
+            card.deck = deck;
+        }
+
+        [self saveContext];
+    }
+
 }
 
 @end
