@@ -22,16 +22,25 @@ typedef enum GameStateEnum {
     GameStateMax
 } GameState;
 
+typedef enum OrientationStateEnum {
+    NeedsLandscape, // round started but device has not gone to landscape so do not calculate motion
+    Regular,
+    FaceDownTriggered,
+    FaceUpTriggered
+} OrientationState;
+
 @interface PlayViewController : UIViewController
 {
     NSTimer *timer;
     float timeLeft;
-    GameState state;
+    GameState gameState;
 
     NSMutableArray *allCards;
     Card *currentCard;
 
     int score;
+    float orientationSum;
+    OrientationState orientationState;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;

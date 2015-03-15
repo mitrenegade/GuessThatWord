@@ -7,6 +7,9 @@
 //
 
 #import "PlayViewController.h"
+#import <CoreMotion/CoreMotion.h>
+
+static CMMotionManager *sharedManager;
 
 @interface PlayViewController ()
 
@@ -15,8 +18,8 @@
 @implementation PlayViewController
 
 #define TIMER_INTERVAL .1
-#define ROUND_TIME 3
-#define REST_TIME 2
+#define ROUND_TIME 200
+#define REST_TIME 5
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,6 +32,9 @@
 
     [self changeStateTo:GameStarting];
     timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(tick) userInfo:nil repeats:YES];
+}
+
+-(void)dealloc {
 }
 
 -(void)setupWithDeck:(Deck *)newDeck {
@@ -64,7 +70,7 @@
 -(void)changeStateTo:(GameState)newState {
     // only updates clock and time display
 
-    state = newState;
+    gameState = newState;
 
     if (newState == GameStarting) {
         timeLeft = REST_TIME;
@@ -87,10 +93,10 @@
 }
 
 -(void)timeUp {
-    if (state == GameStarting || state == RoundRest) {
+    if (gameState == GameStarting || gameState == RoundRest) {
         [self roundStart];
     }
-    else if (state == RoundActive) {
+    else if (gameState == RoundActive) {
         [self roundDone];
     }
 }
@@ -107,6 +113,7 @@
         score = 0;
 
         [self enableCardNavigation:YES];
+        [self startOrientationUpdates];
     }
     else {
         [self changeStateTo:NoRound];
@@ -124,6 +131,7 @@
     }
 
     [self enableCardNavigation:NO];
+    [self stopOrientationUpdates];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,7 +165,7 @@
 
 #pragma mark Card control
 -(void)advance:(BOOL)correct {
-    if (state != RoundActive)
+    if (gameState != RoundActive)
         return;
 
     // advances the card, and updates score
@@ -191,5 +199,88 @@
     // todo: when using ipad motion, set some variable
     [self.buttonCorrect setEnabled:enabled];
     [self.buttonSkip setEnabled:enabled];
+}
+
+#pragma mark orientation
+-(CMMotionManager *)sharedManager {
+    if (!sharedManager) {
+        sharedManager = [[CMMotionManager alloc] init];
+    }
+    return sharedManager;
+}
+-(void)startOrientationUpdates {
+    // use device orientation to know absolute position - when the ipad has returned to regular position
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [self listenFor:UIDeviceOrientationDidChangeNotification action:@selector(orientationChanged:)];
+
+    UIDeviceOrientation or = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(or)) {
+        orientationState = Regular;
+    }
+    else {
+        orientationState = NeedsLandscape;
+    }
+
+    // use gyroscope to trigger changes - less stringent than orientation facedown/up
+    NSTimeInterval updateInterval = .1;
+    CMMotionManager *motionManager = [self sharedManager];
+    if ([motionManager isGyroAvailable] == YES) {
+        // Assign the update interval to the motion manager
+        [motionManager setGyroUpdateInterval:updateInterval];
+        [motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMGyroData *gyroData, NSError *error) {
+            float y = gyroData.rotationRate.y;
+            if (orientationState == Regular && UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+                NSLog(@"Rotation change: %f", y);
+                [self updateScreenPositionWithRotation:y];
+            }
+        }];
+    }
+}
+
+- (void)stopOrientationUpdates{
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    [self stopListeningFor:UIDeviceOrientationDidChangeNotification];
+
+    if ([[self sharedManager] isGyroActive] == YES) {
+        [[self sharedManager] stopGyroUpdates];
+    }
+}
+
+-(void)updateScreenPositionWithRotation:(float)change {
+    orientationSum += change;
+    if (orientationSum >= 5) {
+        NSLog(@"Face down!");
+        orientationState = FaceDownTriggered;
+        [self advance:YES];
+        // todo: display status until orientation is reset
+    }
+    else if (orientationSum <= -5) {
+        NSLog(@"Face up!");
+        orientationState = FaceUpTriggered;
+        [self advance:YES];
+        // todo: display status until orientation is reset
+    }
+}
+
+-(void)orientationChanged:(NSNotification *)n {
+    UIDeviceOrientation or = [UIDevice currentDevice].orientation;
+    NSLog(@"Device orientation now: %d", or);
+    // 4 is normal
+    // 5 is facing up
+    // 6 is facing down
+    if (gameState == RoundActive && UIDeviceOrientationIsLandscape(or)) {
+        if (orientationState == NeedsLandscape) {
+            // now round can start
+            NSLog(@"Start");
+        }
+        else if (orientationState == FaceDownTriggered) {
+            NSLog(@"already advanced:YES");
+        }
+        else if (orientationState == FaceUpTriggered) {
+            NSLog(@"already advanced:NO");
+        }
+        orientationSum = 0;
+        orientationState = Regular;
+    }
 }
 @end

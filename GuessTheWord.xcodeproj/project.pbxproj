@@ -33,6 +33,7 @@
 		9E8798DD1AB4B19D008658AB /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798D11AB4B19D008658AB /* Util.m */; };
 		9E8798E41AB4BA60008658AB /* RootSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798E31AB4BA60008658AB /* RootSplitViewController.m */; };
 		9E890D691AB4C5A4002F3AD5 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */; };
+		9E9C55361AB61103007F7D5E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9C55351AB61102007F7D5E /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		9E8798E31AB4BA60008658AB /* RootSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSplitViewController.m; sourceTree = "<group>"; };
 		9E890D671AB4C5A4002F3AD5 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		9E9C55351AB61102007F7D5E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E9C55361AB61103007F7D5E /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +124,7 @@
 		9E8798651AB49F87008658AB = {
 			isa = PBXGroup;
 			children = (
+				9E9C55351AB61102007F7D5E /* CoreMotion.framework */,
 				9E8798701AB49F87008658AB /* GuessTheWord */,
 				9E87988D1AB49F87008658AB /* GuessTheWordTests */,
 				9E87986F1AB49F87008658AB /* Products */,
