@@ -10,6 +10,9 @@
 #import "Util.h"
 #import "AppDelegate.h"
 
+#define MB_DECKS_START 200
+#define MB_DECKS_END 240
+
 @implementation MembrightHelper
 
 -(void)loadMBDecks {
@@ -17,8 +20,8 @@
 }
 
 -(void)loadMBDecksInBackground {
-    static int last = 200;
-    for (int i=last+1; i<500; i++) {
+    static int last = MB_DECKS_START;
+    for (int i=last+1; i<MB_DECKS_END; i++) {
         NSArray *decks = [[Deck where:@{@"id":@(i)}] all];
         if ([decks count] == 0) {
             NSLog(@"Querying for deck %d", i);
@@ -27,7 +30,7 @@
             break;
         }
     }
-    if (last == 500) {
+    if (last == MB_DECKS_END) {
         [timer invalidate];
         timer = nil;
     }
