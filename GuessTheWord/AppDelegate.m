@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Card+Info.h"
+#import "Deck+EasyMapping.h"
+#import "Card+EasyMapping.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +22,9 @@
     // Override point for customization after application launch.
     [self loadDefaultDeck];
 
+    mbHelper = [[MembrightHelper alloc] init];
+    [mbHelper loadMBDecks];
+    
     return YES;
 }
 
@@ -159,7 +165,8 @@
 #pragma default deck
 -(void)loadDefaultDeck {
     NSString *title = @"SAT Vocabulary List";
-    NSArray *decks = [[Deck where:@{@"title":title}] all];
+    NSDictionary *info = @{@"id":@0, @"title":title};
+    NSArray *decks = [[Deck where:info] all];
     if ([decks count] == 0) {
         NSString *filepath = [[NSBundle mainBundle] pathForResource:@"vocab" ofType:@"txt"];
         NSString *fileString = [NSString stringWithContentsOfFile:filepath];
@@ -168,17 +175,16 @@
         NSArray *array = [fileString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSLog(@"Array: %@", array);
 
-        Deck *deck = [Deck createEntityInContext:self.managedObjectContext];
-        deck.title = title;
+        Deck *deck = (Deck *)[Deck createOrUpdateFromDictionary:info managedObjectContext:self.managedObjectContext];
+        int ct = 0;
         for (NSString *word in array) {
-            Card *card = [Card createEntityInContext:self.managedObjectContext];
-            card.text = word;
+            NSDictionary *cardInfo = @{@"id": @(ct++), @"text":word, @"type": CARD_TYPE_SINGLETEXT};
+            Card *card = (Card *)[Card createOrUpdateFromDictionary:cardInfo managedObjectContext:self.managedObjectContext];
             card.deck = deck;
         }
 
         [self saveContext];
     }
-
 }
 
 @end
