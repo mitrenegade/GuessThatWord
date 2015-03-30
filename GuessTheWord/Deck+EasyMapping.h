@@ -11,5 +11,6 @@
 #import "BaseObject+EasyMapping.h"
 
 @interface Deck (EasyMapping)
++(Deck *)parseMembrightInfo:(NSDictionary *)info managedObjectContext:(NSManagedObjectContext *)moc;
 
 @end

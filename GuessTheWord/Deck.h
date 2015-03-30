@@ -2,7 +2,7 @@
 //  Deck.h
 //  GuessTheWord
 //
-//  Created by Bobby Ren on 3/26/15.
+//  Created by Bobby Ren on 3/30/15.
 //  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
 //
 
@@ -15,6 +15,8 @@
 @interface Deck : BaseObject
 
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * type;
+@property (nonatomic, retain) NSNumber * source;
 @property (nonatomic, retain) NSSet *cards;
 @end
 

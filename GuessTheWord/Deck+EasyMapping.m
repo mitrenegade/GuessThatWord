@@ -7,10 +7,32 @@
 //
 
 #import "Deck+EasyMapping.h"
+#import "Deck+Info.h"
 
 @implementation Deck (EasyMapping)
 
-+(NSMutableDictionary *)mappedProperties {
-    return @{@"name":@"title"};
++(EKManagedObjectMapping *) mbMapping {
+    return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass(self.class) withBlock:^(EKManagedObjectMapping *mapping) {
+        [mapping setPrimaryKey:@"id"];
+
+        [mapping mapPropertiesFromArray:[self directProperties]];
+
+        // membright deck title
+        [mapping mapPropertiesFromDictionary:@{@"name":@"title"}];
+
+    }];
+}
+
++(Deck *)parseMembrightInfo:(NSDictionary *)info managedObjectContext:(NSManagedObjectContext *)moc {
+    // base properties like id
+    Deck *deck = (Deck *)[Deck createOrUpdateFromDictionary:info managedObjectContext:moc];
+
+    // membright specific properties like "name"
+    [EKManagedObjectMapper fillObject:deck fromExternalRepresentation:info withMapping:[Deck mbMapping] inManagedObjectContext:moc];
+
+    deck.type = @(DeckTypeQuestionAndAnswer);
+    deck.source = @(DeckSourceMembright);
+
+    return deck;
 }
 @end

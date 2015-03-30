@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		4F39C46B799CE2ADC92450F6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAD50D955D15C503B8905A5 /* libPods.a */; };
 		9E2987CC1AC462AF0046E5A4 /* Deck+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987CB1AC462AF0046E5A4 /* Deck+EasyMapping.m */; };
-		9E2987D51AC464BB0046E5A4 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987D41AC464BB0046E5A4 /* Deck.m */; };
 		9E2987D81AC464D60046E5A4 /* BaseObject+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987D71AC464D60046E5A4 /* BaseObject+EasyMapping.m */; };
 		9E2987DB1AC469250046E5A4 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987DA1AC469250046E5A4 /* BaseObject.m */; };
 		9E3BF9951AC9867900C8EF5F /* Card+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF9941AC9867900C8EF5F /* Card+EasyMapping.m */; };
 		9E3BF99B1AC98B8000C8EF5F /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF99A1AC98B8000C8EF5F /* Card.m */; };
 		9E3BF99E1AC98E6500C8EF5F /* Card+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF99D1AC98E6500C8EF5F /* Card+Info.m */; };
 		9E3BF9A11AC9928500C8EF5F /* MembrightHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF9A01AC9928500C8EF5F /* MembrightHelper.m */; };
+		9E3BF9A71AC9980000C8EF5F /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF9A61AC9980000C8EF5F /* Deck.m */; };
 		9E8798741AB49F87008658AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798731AB49F87008658AB /* main.m */; };
 		9E8798771AB49F87008658AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798761AB49F87008658AB /* AppDelegate.m */; };
 		9E8798801AB49F87008658AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E87987E1AB49F87008658AB /* Main.storyboard */; };
@@ -59,8 +59,6 @@
 		893E279FF718B3156F5370A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9E2987CA1AC462AF0046E5A4 /* Deck+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deck+EasyMapping.h"; sourceTree = "<group>"; };
 		9E2987CB1AC462AF0046E5A4 /* Deck+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deck+EasyMapping.m"; sourceTree = "<group>"; };
-		9E2987D31AC464BB0046E5A4 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
-		9E2987D41AC464BB0046E5A4 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		9E2987D61AC464D60046E5A4 /* BaseObject+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseObject+EasyMapping.h"; sourceTree = "<group>"; };
 		9E2987D71AC464D60046E5A4 /* BaseObject+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseObject+EasyMapping.m"; sourceTree = "<group>"; };
 		9E2987D91AC469250046E5A4 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		9E3BF99D1AC98E6500C8EF5F /* Card+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Card+Info.m"; sourceTree = "<group>"; };
 		9E3BF99F1AC9928500C8EF5F /* MembrightHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MembrightHelper.h; sourceTree = "<group>"; };
 		9E3BF9A01AC9928500C8EF5F /* MembrightHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MembrightHelper.m; sourceTree = "<group>"; };
+		9E3BF9A51AC9980000C8EF5F /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		9E3BF9A61AC9980000C8EF5F /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		9E87986E1AB49F87008658AB /* GuessTheWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8798721AB49F87008658AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E8798731AB49F87008658AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -232,12 +232,12 @@
 			isa = PBXGroup;
 			children = (
 				9E8798A11AB4A548008658AB /* Model.xcdatamodeld */,
+				9E3BF9A51AC9980000C8EF5F /* Deck.h */,
+				9E3BF9A61AC9980000C8EF5F /* Deck.m */,
 				9E3BF9991AC98B8000C8EF5F /* Card.h */,
 				9E3BF99A1AC98B8000C8EF5F /* Card.m */,
 				9E2987D91AC469250046E5A4 /* BaseObject.h */,
 				9E2987DA1AC469250046E5A4 /* BaseObject.m */,
-				9E2987D31AC464BB0046E5A4 /* Deck.h */,
-				9E2987D41AC464BB0046E5A4 /* Deck.m */,
 				9E8798AD1AB4ACD5008658AB /* Deck+Info.h */,
 				9E8798AE1AB4ACD5008658AB /* Deck+Info.m */,
 				9E3BF99C1AC98E6500C8EF5F /* Card+Info.h */,
@@ -445,6 +445,7 @@
 				9E8798D21AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				9E8798D81AB4B19D008658AB /* NSObject+Notify.m in Sources */,
 				9E8798D61AB4B19D008658AB /* NSManagedObject+Entity.m in Sources */,
+				9E3BF9A71AC9980000C8EF5F /* Deck.m in Sources */,
 				9E8798DB1AB4B19D008658AB /* UIImage+Resize.m in Sources */,
 				9E8798741AB49F87008658AB /* main.m in Sources */,
 				9E8798D71AB4B19D008658AB /* NSManagedObject+Query.m in Sources */,
@@ -457,7 +458,6 @@
 				9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */,
 				9E8798DC1AB4B19D008658AB /* UIImage+RoundedCorner.m in Sources */,
 				9E2987DB1AC469250046E5A4 /* BaseObject.m in Sources */,
-				9E2987D51AC464BB0046E5A4 /* Deck.m in Sources */,
 				9E2987CC1AC462AF0046E5A4 /* Deck+EasyMapping.m in Sources */,
 				9E890D691AB4C5A4002F3AD5 /* PlayViewController.m in Sources */,
 				9E8798AF1AB4ACD5008658AB /* Deck+Info.m in Sources */,

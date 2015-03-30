@@ -11,12 +11,14 @@
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck" syncable="YES"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" parentEntity="BaseObject" syncable="YES">
+        <attribute name="source" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
     </entity>
     <elements>
         <element name="BaseObject" positionX="-63" positionY="18" width="128" height="58"/>
         <element name="Card" positionX="-54" positionY="0" width="128" height="120"/>
-        <element name="Deck" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Deck" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

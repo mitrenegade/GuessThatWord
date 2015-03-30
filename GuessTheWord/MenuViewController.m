@@ -39,7 +39,7 @@
 }
 
 -(void)reloadData {
-    decks = [[Deck where:@{}] all];
+    decks = [[[Deck where:@{}] ascending:@"id"] all];
     NSLog(@"Reloading decks: %lu decks", [decks count]);
     [self.tableView reloadData];
 }

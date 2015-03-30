@@ -7,6 +7,8 @@
 //
 
 #import "EditDeckViewController.h"
+#import "Deck+Info.h"
+#import "MembrightHelper.h"
 
 #define PLACEHOLDER_TITLE @"Enter a name for this deck"
 #define FORMAT_CARD_COUNT @"Cards in deck: %lu"
@@ -24,6 +26,7 @@
 
     [self updateTitle];
     [self updateCardCount];
+
 }
 
 -(Deck *)deck {
@@ -55,7 +58,13 @@
     deck = _deck;
     [self updateTitle];
     [self updateCardCount];
-    [self saveDeck];
+
+    if (_deck.cards.count == 0 && [_deck isMBDeck]) {
+        MembrightHelper *helper = [[MembrightHelper alloc] init];
+        [helper queryForCardsInDeck:self.deck];
+
+        [self listenFor:@"deck:updated" action:@selector(updateCardCount) object:_deck];
+    }
 }
 
 -(void)updateTitle {

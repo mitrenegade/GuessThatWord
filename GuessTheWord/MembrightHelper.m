@@ -43,12 +43,17 @@
 
         if (results.count) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                Deck *deck = (Deck *)[Deck createOrUpdateFromDictionary:results managedObjectContext:_appDelegate.managedObjectContext];
+                Deck *deck = (Deck *)[Deck parseMembrightInfo:results managedObjectContext:_appDelegate.managedObjectContext];
 
                 //        [self queryForCardsInDeck:deck];
 
                 [self notify:@"decks:updated"];
+
+                [_appDelegate saveContext];
             });
+        }
+        else {
+            NSLog(@"No results for deck %d", deckId);
         }
     }];
 }
@@ -66,7 +71,11 @@
 
                 Card *card = (Card *)[Card parseMembrightInfo:cardInfo managedObjectContext:_appDelegate.managedObjectContext];
                 card.deck = deck;
+
             }
+            [self notify:@"deck:updated" object:deck userInfo:nil];
+
+            [_appDelegate saveContext];
         });
     }];
 }

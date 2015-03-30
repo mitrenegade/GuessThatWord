@@ -10,4 +10,8 @@
 
 @implementation Deck (Info)
 
+-(BOOL)isMBDeck {
+    return [self.source intValue] == DeckSourceMembright;
+}
+
 @end

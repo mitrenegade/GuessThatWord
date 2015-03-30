@@ -17,5 +17,6 @@
 }
 
 -(void)loadMBDecks;
+-(void)queryForCardsInDeck:(Deck *)deck;
 
 @end
