@@ -1,5 +1,5 @@
 //
-//  Card.m
+//  Card+Info.h
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/30/15.
@@ -7,15 +7,10 @@
 //
 
 #import "Card.h"
-#import "Deck.h"
 
+#define CARD_TYPE_FRONTANDBACK @"frontAndBack"
+#define CARD_TYPE_SINGLETEXT @"singleText"
 
-@implementation Card
-
-@dynamic text;
-@dynamic question;
-@dynamic answer;
-@dynamic type;
-@dynamic deck;
+@interface Card (Info)
 
 @end

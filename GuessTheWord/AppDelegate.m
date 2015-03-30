@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Card+Info.h"
+#import "Deck+EasyMapping.h"
+#import "Card+EasyMapping.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +22,9 @@
     // Override point for customization after application launch.
     [self loadDefaultDeck];
 
+    mbHelper = [[MembrightHelper alloc] init];
+    [mbHelper loadMBDecks];
+    
     return YES;
 }
 
@@ -57,6 +63,11 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+- (NSURL *)storeURL {
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GuessTheWord.sqlite"];
+    return storeURL;
+}
+
 - (NSManagedObjectModel *)managedObjectModel {
     // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
     if (_managedObjectModel != nil) {
@@ -76,10 +87,11 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GuessTheWord.sqlite"];
+    NSURL *storeURL = [self storeURL];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    NSPersistentStore *store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+    if (!store) {
         // Report any error we got.
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
@@ -89,12 +101,17 @@
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
     }
     
+    if (![_managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:[_persistentStoreCoordinator metadataForPersistentStore:store]]) {
+        NSError *error;
+
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [self resetCoreData];
+    }
+
     return _persistentStoreCoordinator;
 }
-
 
 - (NSManagedObjectContext *)managedObjectContext {
     // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
@@ -109,6 +126,25 @@
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
+}
+
+-(void)resetCoreData {
+    NSLog(@"Resetting core data");
+    [self.managedObjectContext lock];
+    [self.managedObjectContext reset];
+
+    NSError *error;
+    NSURL *storeURL = [self storeURL];
+    NSPersistentStore *store = [self.persistentStoreCoordinator persistentStoreForURL:storeURL];
+    if (store)
+        [self.persistentStoreCoordinator removePersistentStore:store error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+
+    [self.managedObjectContext unlock];
+
+    _persistentStoreCoordinator = nil;
+    _managedObjectContext = nil;
+    _managedObjectModel = nil;
 }
 
 #pragma mark - Core Data Saving support
@@ -129,7 +165,8 @@
 #pragma default deck
 -(void)loadDefaultDeck {
     NSString *title = @"SAT Vocabulary List";
-    NSArray *decks = [[Deck where:@{@"title":title}] all];
+    NSDictionary *info = @{@"id":@0, @"title":title};
+    NSArray *decks = [[Deck where:info] all];
     if ([decks count] == 0) {
         NSString *filepath = [[NSBundle mainBundle] pathForResource:@"vocab" ofType:@"txt"];
         NSString *fileString = [NSString stringWithContentsOfFile:filepath];
@@ -138,17 +175,16 @@
         NSArray *array = [fileString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSLog(@"Array: %@", array);
 
-        Deck *deck = [Deck createEntityInContext:self.managedObjectContext];
-        deck.title = title;
+        Deck *deck = (Deck *)[Deck createOrUpdateFromDictionary:info managedObjectContext:self.managedObjectContext];
+        int ct = 0;
         for (NSString *word in array) {
-            Card *card = [Card createEntityInContext:self.managedObjectContext];
-            card.text = word;
+            NSDictionary *cardInfo = @{@"id": @(ct++), @"text":word, @"type": CARD_TYPE_SINGLETEXT};
+            Card *card = (Card *)[Card createOrUpdateFromDictionary:cardInfo managedObjectContext:self.managedObjectContext];
             card.deck = deck;
         }
 
         [self saveContext];
     }
-
 }
 
 @end

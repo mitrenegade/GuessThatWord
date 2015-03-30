@@ -11,8 +11,10 @@
 
 @interface MenuViewController : UITableViewController
 {
-    NSMutableArray *decks;
+    NSFetchedResultsController *fetchController;
 }
 
 @property (weak, nonatomic) EditDeckViewController *editDeckController;
+
+-(NSFetchedResultsController *)fetchController;
 @end

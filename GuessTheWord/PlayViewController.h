@@ -52,6 +52,8 @@ typedef enum OrientationStateEnum {
 @property (weak, nonatomic) IBOutlet UIButton *buttonCorrect;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSkip;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonAnswerOrHint;
+
 @property (nonatomic) Deck *deck;
 @property (weak, nonatomic) id delegate;
 

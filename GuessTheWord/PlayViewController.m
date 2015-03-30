@@ -8,6 +8,8 @@
 
 #import "PlayViewController.h"
 #import <CoreMotion/CoreMotion.h>
+#import "Deck+Info.h"
+#import "Card+Info.h"
 
 static CMMotionManager *sharedManager;
 
@@ -52,6 +54,14 @@ static CMMotionManager *sharedManager;
 
     if (timer) {
         [timer invalidate];
+    }
+
+    self.buttonAnswerOrHint.hidden = YES;
+    if ([self.deck isMBDeck]) {
+        self.buttonAnswerOrHint.hidden = NO;
+    }
+    if (TESTING) {
+        self.buttonAnswerOrHint.hidden = NO;
     }
 }
 
@@ -161,6 +171,11 @@ static CMMotionManager *sharedManager;
     else if (sender == self.buttonSkip) {
         [self advance:NO];
     }
+    else if (sender == self.buttonAnswerOrHint) {
+        if ([currentCard.type isEqualToString:CARD_TYPE_FRONTANDBACK]) {
+            self.labelMessage.text = currentCard.answer;
+        }
+    }
 }
 
 #pragma mark Card control
@@ -191,7 +206,7 @@ static CMMotionManager *sharedManager;
     currentCard = allCards[0];
     [allCards removeObject:currentCard];
 
-    self.labelWord.text = currentCard.text;
+    [self updateCurrentCard];
     return YES;
 }
 
@@ -201,6 +216,14 @@ static CMMotionManager *sharedManager;
     [self.buttonSkip setEnabled:enabled];
 }
 
+-(void) updateCurrentCard {
+    if ([currentCard.type isEqualToString:CARD_TYPE_SINGLETEXT]) {
+        self.labelWord.text = currentCard.text;
+    }
+    else if ([currentCard.type isEqualToString:CARD_TYPE_FRONTANDBACK]) {
+        self.labelWord.text = currentCard.question;
+    }
+}
 #pragma mark orientation
 -(CMMotionManager *)sharedManager {
     if (!sharedManager) {
@@ -281,6 +304,9 @@ static CMMotionManager *sharedManager;
         }
         orientationSum = 0;
         orientationState = Regular;
+    }
+    else {
+        NSLog(@"Whats up");
     }
 
     // todo: display message before advancing; only advance when the device has been returned to the upright position

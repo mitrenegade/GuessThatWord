@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "MembrightHelper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    MembrightHelper *mbHelper;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

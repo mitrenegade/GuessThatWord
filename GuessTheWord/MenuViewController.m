@@ -7,6 +7,9 @@
 //
 
 #import "MenuViewController.h"
+#import "Util.h"
+#import "BaseObject+EasyMapping.h"
+#import "Card+EasyMapping.h"
 
 @interface MenuViewController ()
 
@@ -22,7 +25,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
     [self reloadData];
     [self listenFor:@"decks:updated" action:@selector(updateDecks:)];
 }
@@ -37,36 +39,63 @@
 }
 
 -(void)reloadData {
-    decks = [[Deck where:@{}] all];
-    NSLog(@"Reloading decks: %lu decks", [decks count]);
+    [self.fetchController performFetch:nil];
+
+    NSLog(@"Reloading decks: %d decks", [self.fetchController.fetchedObjects count]);
     [self.tableView reloadData];
+}
+
+#pragma mark NSFetchedResultsController 
+
+-(NSFetchedResultsController *)fetchController {
+    if (fetchController) {
+        return fetchController;
+    }
+
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Deck"];
+    NSSortDescriptor *sortBySource = [[NSSortDescriptor alloc] initWithKey:@"source" ascending:YES];
+    NSSortDescriptor *sortByID = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
+    request.sortDescriptors = @[sortBySource, sortByID];
+    fetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:_appDelegate.managedObjectContext sectionNameKeyPath:@"source" cacheName:nil];
+    [fetchController performFetch:nil];
+
+    return fetchController;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [self.fetchController.sections count] + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return decks.count + 1;
+    if (section == 0) {
+        return 1;
+    }
+    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchController.sections[section-1];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     NSInteger row = indexPath.row;
-    if (row == 0) {
+    NSInteger section = indexPath.section;
+    if (section == 0) {
         cell.textLabel.text = @"Create a new deck";
     }
     else {
-        if (row - 1 <= decks.count) {
-            Deck *deck = decks[row-1];
-            cell.textLabel.text = deck.title;
-            if (!deck.title) {
-                cell.textLabel.text = @"Untitled deck";
+        if (section - 1 <= self.fetchController.sections.count) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchController.sections[section-1];
+            if (row < [sectionInfo numberOfObjects]) {
+                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+                Deck *deck = [self.fetchController objectAtIndexPath:newIndexPath];
+                cell.textLabel.text = deck.title;
+                if (!deck.title) {
+                    cell.textLabel.text = @"Untitled deck";
+                }
             }
         }
     }
@@ -75,17 +104,28 @@
     return cell;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return nil;
+    }
+
+    NSArray *titles = @[@"", @"HeadsUp decks", @"Membright decks"];
+    return titles[section];
+}
+
+
 #pragma mark TableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         NSLog(@"create a new deck");
         [self.editDeckController createNewDeck];
     }
-    else if (indexPath.row-1 < decks.count) {
-        Deck *deck = decks[indexPath.row-1];
-        NSLog(@"editing deck %lu %@", indexPath.row-1, deck.title);
+    else if (indexPath.section-1 < self.fetchController.sections.count) {
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+        NSLog(@"viewing deck %@", newIndexPath);
+        Deck *deck = [self.fetchController objectAtIndexPath:newIndexPath];
         [self.editDeckController editDeck:deck];
     }
 }
