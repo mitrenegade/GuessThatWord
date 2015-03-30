@@ -91,5 +91,50 @@
     return [self timeAgo:date];
 }
 
+#pragma mark Requests
++(void)easyRequest:(NSString *)endpoint method:(NSString *)method params:(id)params completion:(void(^)(NSDictionary *results, NSError *error))completion {
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+    NSData *getData;
+    if ([params isKindOfClass:[NSDictionary class]])
+        getData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    else
+        getData = [params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+    NSString *getLength = [NSString stringWithFormat:@"%lu", [getData length]];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:endpoint]];
+    [request setValue:getLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPMethod:method];
+    [request setHTTPBody:getData];
+
+    // if we need headers like GPRequest
+    [request setValue:getLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"iPhone" forHTTPHeaderField:@"Device-Type"];
+    [request setValue:VERSION forHTTPHeaderField:@"Version-Number"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"application/vnd.pact.v%d", 4] forHTTPHeaderField:@"Accept"];
+
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            if (completion)
+                completion(nil, error);
+        }
+        else {
+            NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
+            int status = (int)[httpResponse statusCode];
+            // todo: handle error status. Info is still contained in the JSON but return an error object constructed from the JSON?
+
+            // for debug: see if data is valid
+            NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"Received status %d json: %@", status, json);
+
+            NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+
+            if (completion) {
+                completion(results, nil);
+            }
+        }
+    }];
+}
 
 @end

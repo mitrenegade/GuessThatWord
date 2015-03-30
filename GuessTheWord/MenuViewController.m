@@ -7,6 +7,9 @@
 //
 
 #import "MenuViewController.h"
+#import "Util.h"
+#import "BaseObject+EasyMapping.h"
+#import "Card+EasyMapping.h"
 
 @interface MenuViewController ()
 
@@ -22,6 +25,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self queryForDeck:221];
 
     [self reloadData];
     [self listenFor:@"decks:updated" action:@selector(updateDecks:)];
@@ -88,5 +92,34 @@
         NSLog(@"editing deck %lu %@", indexPath.row-1, deck.title);
         [self.editDeckController editDeck:deck];
     }
+}
+
+#pragma mark Membright API
+-(void)queryForDeck:(int)deckId {
+    NSString *endpoint = [NSString stringWithFormat:@"https://membright.com/api/v2/deck/%d", deckId];
+    NSString *method = @"GET";
+
+    [Util easyRequest:endpoint method:method params:nil completion:^(NSDictionary *results, NSError *error) {
+        NSLog(@"Results: %d", results.count);
+        Deck *deck = (Deck *)[Deck createOrUpdateFromDictionary:results managedObjectContext:_appDelegate.managedObjectContext];
+
+        [self queryForCardsInDeck:deck];
+    }];
+}
+
+-(void)queryForCardsInDeck:(Deck *)deck {
+    NSString *endpoint = [NSString stringWithFormat:@"https://membright.com/api/v2/card/?deck__id=%@&format=json", deck.id];
+    NSString *method = @"GET";
+
+    [Util easyRequest:endpoint method:method params:nil completion:^(NSDictionary *results, NSError *error) {
+        NSArray *cards = results[@"objects"];
+        NSLog(@"Results: %d", results.count);
+        for (NSDictionary *cardInfo in cards) {
+            NSLog(@"Deck: %@\n%@", cardInfo[@"id"], cardInfo);
+
+            Card *card = (Card *)[Card parseMembrightInfo:cardInfo managedObjectContext:_appDelegate.managedObjectContext];
+            card.deck = deck;
+        }
+    }];
 }
 @end

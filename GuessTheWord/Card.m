@@ -2,7 +2,7 @@
 //  Card.m
 //  GuessTheWord
 //
-//  Created by Bobby Ren on 3/14/15.
+//  Created by Bobby Ren on 3/30/15.
 //  Copyright (c) 2015 Bobby Ren Tech. All rights reserved.
 //
 
@@ -13,6 +13,9 @@
 @implementation Card
 
 @dynamic text;
+@dynamic question;
+@dynamic answer;
+@dynamic type;
 @dynamic deck;
 
 @end

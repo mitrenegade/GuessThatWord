@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F39C46B799CE2ADC92450F6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAD50D955D15C503B8905A5 /* libPods.a */; };
+		9E2987CC1AC462AF0046E5A4 /* Deck+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987CB1AC462AF0046E5A4 /* Deck+EasyMapping.m */; };
+		9E2987D51AC464BB0046E5A4 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987D41AC464BB0046E5A4 /* Deck.m */; };
+		9E2987D81AC464D60046E5A4 /* BaseObject+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987D71AC464D60046E5A4 /* BaseObject+EasyMapping.m */; };
+		9E2987DB1AC469250046E5A4 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2987DA1AC469250046E5A4 /* BaseObject.m */; };
+		9E3BF9951AC9867900C8EF5F /* Card+EasyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF9941AC9867900C8EF5F /* Card+EasyMapping.m */; };
+		9E3BF99B1AC98B8000C8EF5F /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3BF99A1AC98B8000C8EF5F /* Card.m */; };
 		9E8798741AB49F87008658AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798731AB49F87008658AB /* main.m */; };
 		9E8798771AB49F87008658AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798761AB49F87008658AB /* AppDelegate.m */; };
 		9E8798801AB49F87008658AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E87987E1AB49F87008658AB /* Main.storyboard */; };
@@ -17,8 +24,6 @@
 		9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798A11AB4A548008658AB /* Model.xcdatamodeld */; };
 		9E8798AC1AB4A95F008658AB /* EditDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798AB1AB4A95F008658AB /* EditDeckViewController.m */; };
 		9E8798AF1AB4ACD5008658AB /* Deck+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798AE1AB4ACD5008658AB /* Deck+Info.m */; };
-		9E8798B21AB4AE4B008658AB /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798B11AB4AE4B008658AB /* Deck.m */; };
-		9E8798B51AB4AE4C008658AB /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798B41AB4AE4C008658AB /* Card.m */; };
 		9E8798D21AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798B91AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E8798D31AB4B19D008658AB /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798BD1AB4B19D008658AB /* NSObject+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9E8798D41AB4B19D008658AB /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8798BF1AB4B19D008658AB /* UIActionSheet+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -48,6 +53,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DAD50D955D15C503B8905A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		893E279FF718B3156F5370A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9E2987CA1AC462AF0046E5A4 /* Deck+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deck+EasyMapping.h"; sourceTree = "<group>"; };
+		9E2987CB1AC462AF0046E5A4 /* Deck+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deck+EasyMapping.m"; sourceTree = "<group>"; };
+		9E2987D31AC464BB0046E5A4 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		9E2987D41AC464BB0046E5A4 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		9E2987D61AC464D60046E5A4 /* BaseObject+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseObject+EasyMapping.h"; sourceTree = "<group>"; };
+		9E2987D71AC464D60046E5A4 /* BaseObject+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseObject+EasyMapping.m"; sourceTree = "<group>"; };
+		9E2987D91AC469250046E5A4 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
+		9E2987DA1AC469250046E5A4 /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
+		9E3BF9931AC9867900C8EF5F /* Card+EasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Card+EasyMapping.h"; sourceTree = "<group>"; };
+		9E3BF9941AC9867900C8EF5F /* Card+EasyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Card+EasyMapping.m"; sourceTree = "<group>"; };
+		9E3BF9991AC98B8000C8EF5F /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		9E3BF99A1AC98B8000C8EF5F /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		9E87986E1AB49F87008658AB /* GuessTheWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8798721AB49F87008658AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E8798731AB49F87008658AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,10 +85,6 @@
 		9E8798AB1AB4A95F008658AB /* EditDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDeckViewController.m; sourceTree = "<group>"; };
 		9E8798AD1AB4ACD5008658AB /* Deck+Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Deck+Info.h"; sourceTree = "<group>"; };
 		9E8798AE1AB4ACD5008658AB /* Deck+Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Deck+Info.m"; sourceTree = "<group>"; };
-		9E8798B01AB4AE4B008658AB /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
-		9E8798B11AB4AE4B008658AB /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
-		9E8798B31AB4AE4C008658AB /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		9E8798B41AB4AE4C008658AB /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		9E8798B81AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		9E8798B91AB4B19D008658AB /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		9E8798BB1AB4B19D008658AB /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
@@ -102,6 +117,7 @@
 		9E890D681AB4C5A4002F3AD5 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		9E9C55351AB61102007F7D5E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9E9C55371AB6284B007F7D5E /* vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocab.txt; sourceTree = "<group>"; };
+		E35E9C41A06F6163F1A50B8D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E9C55361AB61103007F7D5E /* CoreMotion.framework in Frameworks */,
+				4F39C46B799CE2ADC92450F6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9295A780BC572C3823FC996C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DAD50D955D15C503B8905A5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E8798651AB49F87008658AB = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +155,8 @@
 				9E8798701AB49F87008658AB /* GuessTheWord */,
 				9E87988D1AB49F87008658AB /* GuessTheWordTests */,
 				9E87986F1AB49F87008658AB /* Products */,
+				BE7B14F436771C33DBEF1A2A /* Pods */,
+				9295A780BC572C3823FC996C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,12 +224,20 @@
 			isa = PBXGroup;
 			children = (
 				9E8798A11AB4A548008658AB /* Model.xcdatamodeld */,
-				9E8798B31AB4AE4C008658AB /* Card.h */,
-				9E8798B41AB4AE4C008658AB /* Card.m */,
-				9E8798B01AB4AE4B008658AB /* Deck.h */,
-				9E8798B11AB4AE4B008658AB /* Deck.m */,
+				9E3BF9991AC98B8000C8EF5F /* Card.h */,
+				9E3BF99A1AC98B8000C8EF5F /* Card.m */,
+				9E2987D91AC469250046E5A4 /* BaseObject.h */,
+				9E2987DA1AC469250046E5A4 /* BaseObject.m */,
+				9E2987D31AC464BB0046E5A4 /* Deck.h */,
+				9E2987D41AC464BB0046E5A4 /* Deck.m */,
 				9E8798AD1AB4ACD5008658AB /* Deck+Info.h */,
 				9E8798AE1AB4ACD5008658AB /* Deck+Info.m */,
+				9E2987CA1AC462AF0046E5A4 /* Deck+EasyMapping.h */,
+				9E2987CB1AC462AF0046E5A4 /* Deck+EasyMapping.m */,
+				9E2987D61AC464D60046E5A4 /* BaseObject+EasyMapping.h */,
+				9E2987D71AC464D60046E5A4 /* BaseObject+EasyMapping.m */,
+				9E3BF9931AC9867900C8EF5F /* Card+EasyMapping.h */,
+				9E3BF9941AC9867900C8EF5F /* Card+EasyMapping.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -247,6 +282,15 @@
 			path = MKAdditions;
 			sourceTree = "<group>";
 		};
+		BE7B14F436771C33DBEF1A2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				893E279FF718B3156F5370A2 /* Pods.debug.xcconfig */,
+				E35E9C41A06F6163F1A50B8D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,9 +298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E8798941AB49F87008658AB /* Build configuration list for PBXNativeTarget "GuessTheWord" */;
 			buildPhases = (
+				23F3D0CFEDB28FFB2F0DFE2A /* Check Pods Manifest.lock */,
 				9E87986A1AB49F87008658AB /* Sources */,
 				9E87986B1AB49F87008658AB /* Frameworks */,
 				9E87986C1AB49F87008658AB /* Resources */,
+				597C9D8C920CDED87B7F1CFA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,11 +389,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23F3D0CFEDB28FFB2F0DFE2A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		597C9D8C920CDED87B7F1CFA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9E87986A1AB49F87008658AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E3BF9951AC9867900C8EF5F /* Card+EasyMapping.m in Sources */,
 				9E8798D91AB4B19D008658AB /* Query.m in Sources */,
 				9E8798D51AB4B19D008658AB /* UIAlertView+MKBlockAdditions.m in Sources */,
 				9E8798D41AB4B19D008658AB /* UIActionSheet+MKBlockAdditions.m in Sources */,
@@ -360,15 +440,18 @@
 				9E8798D71AB4B19D008658AB /* NSManagedObject+Query.m in Sources */,
 				9E8798E41AB4BA60008658AB /* RootSplitViewController.m in Sources */,
 				9E87989F1AB4A4F0008658AB /* MenuViewController.m in Sources */,
-				9E8798B51AB4AE4C008658AB /* Card.m in Sources */,
+				9E3BF99B1AC98B8000C8EF5F /* Card.m in Sources */,
 				9E8798D31AB4B19D008658AB /* NSObject+MKBlockAdditions.m in Sources */,
 				9E8798A31AB4A548008658AB /* Model.xcdatamodeld in Sources */,
 				9E8798DC1AB4B19D008658AB /* UIImage+RoundedCorner.m in Sources */,
+				9E2987DB1AC469250046E5A4 /* BaseObject.m in Sources */,
+				9E2987D51AC464BB0046E5A4 /* Deck.m in Sources */,
+				9E2987CC1AC462AF0046E5A4 /* Deck+EasyMapping.m in Sources */,
 				9E890D691AB4C5A4002F3AD5 /* PlayViewController.m in Sources */,
 				9E8798AF1AB4ACD5008658AB /* Deck+Info.m in Sources */,
-				9E8798B21AB4AE4B008658AB /* Deck.m in Sources */,
 				9E8798DD1AB4B19D008658AB /* Util.m in Sources */,
 				9E8798AC1AB4A95F008658AB /* EditDeckViewController.m in Sources */,
+				9E2987D81AC464D60046E5A4 /* BaseObject+EasyMapping.m in Sources */,
 				9E8798DA1AB4B19D008658AB /* UIImage+Alpha.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +574,7 @@
 		};
 		9E8798951AB49F87008658AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 893E279FF718B3156F5370A2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = GuessTheWord/PrefixHeader.pch;
@@ -504,6 +588,7 @@
 		};
 		9E8798961AB49F87008658AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E35E9C41A06F6163F1A50B8D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = GuessTheWord/PrefixHeader.pch;

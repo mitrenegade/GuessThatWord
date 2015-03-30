@@ -282,6 +282,9 @@ static CMMotionManager *sharedManager;
         orientationSum = 0;
         orientationState = Regular;
     }
+    else {
+        NSLog(@"Whats up");
+    }
 
     // todo: display message before advancing; only advance when the device has been returned to the upright position
 }

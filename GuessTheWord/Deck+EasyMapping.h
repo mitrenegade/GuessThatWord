@@ -1,5 +1,5 @@
 //
-//  Deck.m
+//  Deck+EasyMapping.h
 //  GuessTheWord
 //
 //  Created by Bobby Ren on 3/26/15.
@@ -7,12 +7,9 @@
 //
 
 #import "Deck.h"
-#import "Card.h"
+#import <EasyMapping.h>
+#import "BaseObject+EasyMapping.h"
 
-
-@implementation Deck
-
-@dynamic title;
-@dynamic cards;
+@interface Deck (EasyMapping)
 
 @end
